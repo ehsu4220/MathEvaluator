@@ -116,39 +116,39 @@ class Evaluator:
                 if self.eat('^'):
                     a = x
                     b = self.parse_factor()
-                    x = lambda a=a, b=b: math.pow(a, b)
+                    x = lambda a=a, b=b: math.pow(a(), b())
                 
                 return x
             
             # All named functions supported
             def get_function_expression(self, func, x):
                 if func == 'sqrt':
-                    return lambda: math.sqrt(x)
+                    return lambda x=x: math.sqrt(x())
                 elif func == 'sin':
-                    return lambda: math.sin(math.radians(x))
+                    return lambda x=x: math.sin(math.radians(x()))
                 elif func == 'cos':
-                    return lambda: math.cos(math.radians(x))
+                    return lambda x=x: math.cos(math.radians(x()))
                 elif func == 'tan':
-                    return lambda: math.tan(math.radians(x))
+                    return lambda x=x: math.tan(math.radians(x()))
                 elif func == 'round':
                     if self.eat(','):
                         a = x
                         b = self.parse_factor()
-                        return lambda a=a, b=b: self.custom_round(a, int(b))
+                        return lambda a=a, b=b: self.custom_round(a(), int(b()))
                     else:
                         raise RuntimeError("Missing second argument for round function")
                 elif func == 'sqr':
-                    return lambda x=x: math.pow(x, 2.0)
+                    return lambda x=x: math.pow(x(), 2.0)
                 elif func == 'exp':
-                    return lambda x=x: math.pow(math.e, x)
+                    return lambda x=x: math.pow(math.e, x())
                 elif func == 'log':
-                    return lambda x=x: math.log(x)
+                    return lambda x=x: math.log(x())
                 elif func == 'log10':
-                    return lambda x=x: math.log10(x)
+                    return lambda x=x: math.log10(x())
                 elif func == 'abs':
-                    return lambda x=x: abs(x)
+                    return lambda x=x: abs(x())
                 elif func == 'neg':
-                    return lambda x=x: -x
+                    return lambda x=x: -x()
                 
                 else:
                     raise RuntimeError(f"Unknown function: {func}")
@@ -162,7 +162,7 @@ class Evaluator:
                 
 
 variables = { 'x' : 5}
-expression = "x / 10"
+expression = "round(3.8888, 2)"
 evaluator = Evaluator()
 result = evaluator.parse(expression, variables)
 print(result)
