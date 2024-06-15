@@ -167,11 +167,3 @@ class Evaluator:
         parser_instance = Parser(expression, variables)
         result = parser_instance.begin_parse()
         return result()
-                
-                
-
-variables = { 'x' : 5}
-expression = "round(3.8888, 2)"
-evaluator = Evaluator()
-result = evaluator.parse(expression, variables)
-print(result)
