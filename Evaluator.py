@@ -75,7 +75,12 @@ class Evaluator:
                         x = lambda a=a, b=b: a() % b()
                     else:
                         return x
-            
+                    
+            '''
+            Unary +, -
+            Operand and Variable processing
+            Named Functions
+            '''
             def parse_factor(self):
                 if self.eat('+'): return self.parse_factor()
                 if self.eat('-'):
@@ -120,6 +125,10 @@ class Evaluator:
                 
                 return x
             
+            
+            '''
+            Named Expression Lambdas
+            '''
             # All named functions supported
             def get_function_expression(self, func, x):
                 if func == 'sqrt':
