@@ -13,3 +13,7 @@ Current supported functions
 - log10()
 - abs()
 - neg()
+
+"""How to run application"""
+- Move to folder location
+- python -m streamlit run app.py
