@@ -1,6 +1,6 @@
 Plan on developing a Math Evaluator Application using Python Streamlit library, hosted on Github.
 
-Current supported functions
+## Current supported functions
 - PEMDAS (Parentheses, Exponents, Multiplication, Division, Addition, Subtraction)
 - sqrt(x)
 - sin(x)
@@ -14,6 +14,6 @@ Current supported functions
 - abs()
 - neg()
 
-##How to run application locally for testing purposes
+## How to run application locally for testing purposes
 - Move to folder location
 - python -m streamlit run app.py
