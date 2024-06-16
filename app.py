@@ -87,6 +87,8 @@ elif page == "Documentation":
         
         This project provides a simple expression evaluator implemented in Python. 
         
+        Code is derived off of the Java implementation provided by Boann: https://stackoverflow.com/questions/3422673/how-to-evaluate-a-math-expression-given-in-string-form
+        
         ## Usage of Web UI
         1. **Input an expression**: Enter the expression you want to evaluate.
         2. **Evaluate**: Click the "Evaluate" button to get the result.
