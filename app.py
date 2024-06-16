@@ -11,29 +11,74 @@ evaluator = Evaluator()
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Evaluator", "Documentation", "About"])
 
-variables = {'x' : 1}
+# Initialize variables dictionary
+if "variables" not in st.session_state:
+    st.session_state["variables"] = {}
+
+# Function to add a variable
+def add_variable(name, value):
+    st.session_state["variables"][name] = value
+
+# Function to clear variables
+def clear_variables():
+    st.session_state["variables"].clear()
 
 # Evaluator page
 if page == "Evaluator":
     st.title("Expression Evaluator")
     
+    st.write("")
+    st.write("")
+    
     # Input Field
-    st.subheader("Expression")
-    expression = st.text_input("Enter an expression to evaluate:")
-
+    exp_col_1, exp_col_2, exp_col_3 = st.columns([0.4, 1, 0.3])
+    with exp_col_1:
+        st.write("")
+        st.subheader("Expression:")
+    with exp_col_2:
+        expression = st.text_input("Enter an expression to evaluate:")
+    with exp_col_3:
+        st.write("")
+        st.write("")
+        # Button to evaluate the expression
+        if st.button("Evaluate"):
+            try:
+                # Parse and evaluate the expression
+                result = evaluator.parse(expression, st.session_state["variables"])
+                st.subheader(f"= {result}")
+            except Exception as e:
+                st.write(f"Error: {e}")
+    
     # Display current variables
-    st.subheader("Variables")
-    for var_name, var_value in variables.items():
-        st.write(f"- {var_name}: {var_value}")
-        
-    # Button to evaluate the expression
-    if st.button("Evaluate"):
-        try:
-            # Parse and evaluate the expression
-            result = evaluator.parse(expression, variables)
-            st.write(f"Result: {result}")
-        except Exception as e:
-            st.write(f"Error: {e}")
+    st.write("")
+    st.write("")
+    var_col1, var_col2, var_col3, var_col4 = st.columns([0.55, 0.4, 1, 0.4])
+    with var_col1:
+        st.write("")
+        st.subheader("Variables:")
+    with var_col2:
+        add_var_name = st.text_input("Variable Character", key="add_var_name")
+    with var_col3:
+        add_var_value = st.number_input("Variable Value", key="add_var_value")
+    with var_col4:
+        st.write("")
+        st.write("")
+        if st.button("Add", key="add_button"):
+            add_variable(add_var_name, add_var_value)
+    
+    st.write("")
+    # Clear and Display
+    display_col_1, display_col_2 = st.columns([0.3, 1])      
+    with display_col_1:
+        if st.button("CLEAR"):
+            clear_variables()  
+    with display_col_2:
+        if len(st.session_state["variables"]) == 0:
+            st.write("No variables defined!")
+        else:
+            for var_name, var_value in st.session_state["variables"].items():
+                st.write(f"- **{var_name}** = `{var_value}`")
+                
 
 elif page == "Documentation":
     st.title("Documentation")
@@ -101,6 +146,9 @@ elif page == "Documentation":
         result = evaluator.parse(expression, variables)
         print(result) # Expected 9.34
         ```
+        
+        ## Other Notes:
+        - Any variable not defined will be replaced with `0`
     """)
 
 elif page == "About":
