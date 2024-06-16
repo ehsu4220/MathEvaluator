@@ -14,6 +14,6 @@ Current supported functions
 - abs()
 - neg()
 
-"""How to run application"""
+##How to run application locally for testing purposes
 - Move to folder location
 - python -m streamlit run app.py
