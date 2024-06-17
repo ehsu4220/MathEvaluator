@@ -91,7 +91,8 @@ elif page == "Documentation":
         
         ## Usage of Web UI
         1. **Input an expression**: Enter the expression you want to evaluate.
-        2. **Evaluate**: Click the "Evaluate" button to get the result.
+        2. (Optional) Add whatever variable definitions in the corresponding input fields.
+        3. **Evaluate**: Click the "Evaluate" button to get the result.
         
         ## Functions supported
         - `sqrt(x)`
