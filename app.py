@@ -98,13 +98,13 @@ elif page == "Documentation":
             - Square root of `x`
             
         - `sin(x)`
-            - Sine of `x`, `x` converted to radians
+            - Sine of `x`, `x` as degrees, returned as radians
             
         - `cos(x)`
-            - Cosine of `x`, `x` converted to radians
+            - Cosine of `x`, `x` as degrees, returned as radians
             
         - `tan(x)`
-            - Tangent of `x`, `x` converted to radians
+            - Tangent of `x`, `x` as degrees, returned as radians
             
         - `sqr(x)`
             - `x` squared
