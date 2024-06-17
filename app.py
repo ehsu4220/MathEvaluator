@@ -142,7 +142,7 @@ elif page == "Documentation":
         expression = "round(3 + 5 * x^2 + 1.337, 2)"
 
         # A dictionary to hold variables if needed (currently empty)
-        variables = {x : 1}
+        variables = {'x' : 1}
 
         # Result
         result = evaluator.parse(expression, variables)

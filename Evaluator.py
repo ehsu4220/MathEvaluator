@@ -101,7 +101,7 @@ class Evaluator:
                 
                 # Parsing functions
                 elif self.ch >= 'a' and self.ch <= 'z':
-                    while self.ch >= 'a' and self.ch <= 'z' or self.ch == '1' or self.ch == '0':
+                    while self.ch is not None and self.ch >= 'a' and self.ch <= 'z' or self.ch == '1' or self.ch == '0':
                         self.next_char()
                     token = self.expression[startPos : self.pos]
                     if (self.eat('(')):
@@ -111,7 +111,10 @@ class Evaluator:
                     
                     # Variable
                     else:
-                        x = lambda token=token: self.variables.get(token, 0.0)
+                        if token == 'e':
+                            x = lambda: math.e
+                        else:
+                            x = lambda token=token: self.variables.get(token, 0.0)
                 
                 # Unknown Character
                 else:
