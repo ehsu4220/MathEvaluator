@@ -112,8 +112,8 @@ elif page == "Documentation":
         - `exp(x)`
             - raises `e` to the power of `x`
             
-        - `log(x)`
-            - Log base `e` of x
+        - `ln(x)`
+            - Log base `e` of `x`
         
         - `log10(x)`
             - Log base 10 of `x`
