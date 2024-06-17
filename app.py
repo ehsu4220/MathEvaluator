@@ -151,6 +151,7 @@ elif page == "Documentation":
         
         ## Other Notes:
         - Any variable not defined will be replaced with `0`
+        - Any variable declared as `e` will be defined as `math.e`
     """)
 
 elif page == "About":
