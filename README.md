@@ -17,3 +17,6 @@ Plan on developing a Math Evaluator Application using Python Streamlit library, 
 ## How to run application locally for testing purposes
 - Move to folder location
 - python -m streamlit run app.py
+
+## Deployed via streamlit community
+- https://mathevaluator.streamlit.app
