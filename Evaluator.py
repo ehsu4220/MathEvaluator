@@ -87,6 +87,10 @@ class Evaluator:
                     x = self.parse_factor()
                     return lambda x=x: -x
 
+                # Edge case, empty expression
+                if self.ch is None:
+                    return lambda: 0
+                
                 # Parsing operands
                 x = -1
                 startPos = self.pos
@@ -100,7 +104,7 @@ class Evaluator:
                     x = lambda: value
                 
                 # Parsing functions
-                elif self.ch >= 'a' and self.ch <= 'z':
+                elif self.ch is not None and self.ch >= 'a' and self.ch <= 'z':
                     while self.ch is not None and self.ch >= 'a' and self.ch <= 'z' or self.ch == '1' or self.ch == '0':
                         self.next_char()
                     token = self.expression[startPos : self.pos]
@@ -170,3 +174,17 @@ class Evaluator:
         parser_instance = Parser(expression, variables)
         result = parser_instance.begin_parse()
         return result()
+    
+    
+# # Initialize the Evaluator
+# evaluator = Evaluator()
+
+# # Expression
+# expression = " x"
+
+# # A dictionary to hold variables if needed (currently empty)
+# variables = {'x' : 1}
+
+# # Result
+# result = evaluator.parse(expression, variables)
+# print(result) # Expected 9.34
