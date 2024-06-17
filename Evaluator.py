@@ -150,7 +150,7 @@ class Evaluator:
                     return lambda x=x: math.pow(x(), 2.0)
                 elif func == 'exp':
                     return lambda x=x: math.pow(math.e, x())
-                elif func == 'log':
+                elif func == 'ln':
                     return lambda x=x: math.log(x())
                 elif func == 'log10':
                     return lambda x=x: math.log10(x())
